@@ -1,0 +1,44 @@
+.irpw-article {
+    border-top: 1px solid white;
+    height: 88px;
+    overflow: hidden;
+}
+
+.irpw-title {
+    display: block;
+    position: relative;
+}
+
+.irpw-article h1 {
+    position: absolute;
+    top: 0.75em;
+    left: 0.75em;
+    right: 0.75em;
+    z-index: 2;
+    font-size: 14.0px;
+    overflow: hidden;
+}
+
+.irpw-sep {
+    position: absolute;
+    left: -999em;
+    height: 0;
+    overflow: hidden;
+}
+
+.irpw-date {
+    display: block;
+    margin-top: 0.5em;
+    font-size: 11.9;
+}
+
+.irpw-bg {
+    background: #404040;
+    opacity: 0.25;
+}
+
+.irpw-bg img {
+    width: 100%;
+    display: block;
+    opacity: 0.25;
+}
