@@ -17,13 +17,14 @@ Description
 -----------
 
 This is a fairly ordinary extension of the Recent Posts widget.
-What's useful about it is that scans all each recent post for an image
+What's useful about it is that scans each recent post for an image
 and, if one is found, adds it to a div at the end of the returned HTML
 object.  With a little CSS magic (see the included CSS file), the
-image is faded out and the text superimposed above it.  This is really
-attractive for gaming and movie sites.  This effect, or something like
-it, can be clearly seen at theverge.com's home page, and I've
-implemented it for iGameRadio.com.
+image is faded out slightly, like a background, and the text
+superimposed above it.  This can be really attractive for gaming and
+movie sites.  This effect, or something like it, can be clearly seen
+at theverge.com's home page, and I've implemented it for
+iGameRadio.com.  
 
 You can limit them by category (for example, "podcasts" or "news").
 
@@ -52,7 +53,8 @@ Implement and understand the caching feature as seen in
 default-widgets.php.
 
 Implement a per-post styling filter that allows us to colorize each
-image as seen at theverge.com.
+image as seen at theverge.com, as well as alter the opacity, depending
+upon the user's wishes.
 
 Implement variable display fields (author, date, comment count) on
 each article.
