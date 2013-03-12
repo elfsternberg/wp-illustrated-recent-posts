@@ -1,4 +1,5 @@
-=== Illustrated Recent Posts Widget ===
+== Illustrated Recent Posts Widget ==
+
 Plugin Name: Illustrated Recent Posts Widget
 Plugin URI: http://github.com/elfsternberg/illustrated-recent-posts-wp/
 Description: This plugin creates a fairly limited widget, but the magic in the CSS creates a lovely background for individual posts.
