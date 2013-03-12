@@ -24,7 +24,9 @@ class Illustrated_Recent_Posts_Widget extends WP_Widget {
 
   function __construct() {
     $widget_ops = array(
+      /* classname embedded in parent wrapper */
       'classname'   => 'widget_recent_entries', 
+      /* description as it appears in admin */
       'description' => 
         __('Display a list of recent post entries with a specific illustration.'));
 
@@ -86,6 +88,9 @@ class Illustrated_Recent_Posts_Widget extends WP_Widget {
       wp_reset_query();
       echo $after_widget;
   }
+
+  /* Details that need to be saved from the admin form for a specific
+   * instance in a specific sidebar. */
 
   function update( $new_instance, $old_instance ) {
     $instance = $old_instance;
