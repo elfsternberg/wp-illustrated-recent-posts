@@ -109,7 +109,7 @@ class Illustrated_Recent_Posts_Widget extends WP_Widget {
     $option_base ='<input type="checkbox" id="'. $this->get_field_id('cats') .'[]" name="'. $this->get_field_name('cats') .'[]"';
 
     $isChecked = function($c) use ($cats_instance) {
-      $is_a_cat = function($ic) { return ($ic == $c->term_id); };
+      $is_a_cat = function($ic) use ($c) { return ($ic == $c->term_id); };
       return (count(array_filter($cats_instance, $is_a_cat)) > 0);
     };
 
