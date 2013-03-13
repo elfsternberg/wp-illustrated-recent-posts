@@ -105,7 +105,23 @@ class Illustrated_Recent_Posts_Widget extends WP_Widget {
     $title = isset($instance['title']) ? esc_attr($instance['title']) : 'Recent Posts';
     $number = isset($instance['number']) ? absint($instance['number']) : 5;
     $show_date = isset( $instance['show_date'] ) ? (bool) $instance['show_date'] : false;
+    $cats_instance = $instance['cats'];
+    $option_base ='<input type="checkbox" id="'. $this->get_field_id('cats') .'[]" name="'. $this->get_field_name('cats') .'[]"';
+
+    $isChecked = function($c) use ($cats_instance) {
+      $is_a_cat = function($ic) { return ($ic == $c->term_id); };
+      return (count(array_filter($cats_instance, $is_a_cat)) > 0);
+    };
+
+    $reduce_categories = function($result, $c) use ($isChecked, $option_base) {
+      $checked = ($isChecked($c)) ? ' checked="checked"' : '';
+      if ($result == NULL) {
+        return $option_base . $checked . ' value="' . $c->term_id.'" />&nbsp;' . $c->cat_name . '<br />';
+      }
+      return $result . $option_base . $checked . ' value="' . $c->term_id.'" />&nbsp;' . $c->cat_name . '<br />';
+    };
   ?>
+
     <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
     <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
                         
@@ -115,22 +131,10 @@ class Illustrated_Recent_Posts_Widget extends WP_Widget {
     <p>
       <label for="<?php echo $this->get_field_id('cats'); ?>"><?php _e('Select categories to include in the illustrated links list:');?> 
       <br/>                                                                                                             
-      <?php
-      $categories = get_categories('hide_empty=0');
-      foreach ($categories as $c) {
-        $option='<input type="checkbox" id="'. $this->get_field_id('cats') .'[]" name="'. $this->get_field_name('cats') .'[]"';
-        if (is_array($instance['cats'])) {
-          foreach ($instance['cats'] as $cs) {
-            if($cs == $c->term_id) {
-              $option = $option.' checked="checked"';
-            }
-          }
-        }
-        echo $option . ' value="' . $c->term_id.'" />&nbsp;' . $c->cat_name . '<br />';
-      }
-      ?>
+         <?php echo array_reduce(get_categories('hide_empty=0'), $reduce_categories, NULL); ?>
       </label>
     </p>
+
 <?php
 	}
 }
